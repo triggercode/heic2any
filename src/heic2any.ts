@@ -60,7 +60,8 @@ const utils = {
 
 			try {
 				canvas = document.createElement("canvas");
-			} catch (e) {}
+				(canvas as any).__skipFilterPatch = true; // FIXME: @tbr this compatibility with context-filter-polyfill
+			} catch (e) { }
 
 			if (!canvas) {
 				return reject(
